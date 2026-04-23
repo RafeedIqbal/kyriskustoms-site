@@ -1,0 +1,23 @@
+HTTrack3.49-2 launched on Thu, 23 Apr 2026 16:24:39 at https://www.kyriskustoms.com/
+(winhttrack https://www.kyriskustoms.com/ -W -O "/Users/rafeediqbal/websites/kyriskustoms" -%v )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+16:24:53	Error: 	"Not Found" (404) at link https://www.kyriskustoms.com/t (from https://www.kyriskustoms.com/)
+16:24:53	Error: 	"Not Found" (404) at link https://www.kyriskustoms.com/o (from https://www.kyriskustoms.com/)
+16:24:53	Error: 	"Bad Request" (400) at link https://www.kyriskustoms.com/"https://static.wixstatic.com/media/6a3a01_02322f05953a4b178780dc300749bb9bf001.jpg/v1/fill/w_1280,h_720,enc_auto/file.jpeg" (from https://www.kyriskustoms.com/)
+16:24:53	Error: 	"Bad Request" (400) at link https://www.kyriskustoms.com/window.location.href (from https://www.kyriskustoms.com/)
+16:24:53	Warning: 	Moved Permanently for https://www.kyriskustoms.com/api/
+16:24:53	Warning: 	File has moved from https://www.kyriskustoms.com/api/ to https://www.kyriskustoms.com/api
+16:24:54	Warning: 	Moved Permanently for https://www.kyriskustoms.com/envelope/
+16:24:54	Warning: 	File has moved from https://www.kyriskustoms.com/envelope/ to https://www.kyriskustoms.com/envelope
+16:24:55	Error: 	"Not Found" (404) at link https://www.kyriskustoms.com/feed.xml (from https://www.kyriskustoms.com/)
+16:24:55	Error: 	"Bad Request" (400) at link https://www.kyriskustoms.com/decodeURIComponent(e (from https://www.kyriskustoms.com/)
+16:24:55	Error: 	"Not Found" (404) at link https://www.kyriskustoms.com/api (from https://www.kyriskustoms.com/api/)
+16:24:55	Error: 	"Not Found" (404) at link https://www.kyriskustoms.com/envelope (from https://www.kyriskustoms.com/envelope/)
+
+HTTrack Website Copier/3.49-2 mirror complete in 16 seconds : 17 links scanned, 6 files written (3176868 bytes overall) [860668 bytes received at 53791 bytes/sec], 3194834 bytes transferred using HTTP compression in 15 files, ratio 25%
+(8 errors, 4 warnings, 0 messages)

@@ -1,0 +1,1105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>KYRIS KUSTOMS — Bespoke Menswear</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0e0c0a;
+  --ink-soft:#1a1714;
+  --bone:#f4efe6;
+  --bone-2:#ece5d7;
+  --paper:#faf7f1;
+  --rule:#d8cfbf;
+  --mute:#8b8275;
+  --accent:#6b1f1a;  /* oxblood */
+  --gold:#a3844c;
+  --serif:'Cormorant Garamond', serif;
+  --sans:'Inter Tight', -apple-system, sans-serif;
+  --mono:'JetBrains Mono', ui-monospace, monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bone);color:var(--ink);font-family:var(--sans);font-weight:400;-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+body{overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+.mono{font-family:var(--mono);font-weight:300;letter-spacing:.02em;font-size:11px;text-transform:uppercase}
+.label{font-family:var(--sans);font-size:11px;letter-spacing:.32em;text-transform:uppercase;font-weight:500}
+.serif{font-family:var(--serif);font-weight:300}
+.italic{font-style:italic}
+
+/* ——— Chrome ——— */
+.chrome-top{position:fixed;top:0;left:0;right:0;z-index:100;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:22px 40px;pointer-events:none;mix-blend-mode:difference;color:#f4efe6}
+.chrome-top > *{pointer-events:auto}
+.wordmark{font-family:var(--serif);font-size:22px;font-weight:400;letter-spacing:.22em;text-align:center;line-height:1}
+.wordmark small{display:block;font-family:var(--sans);font-size:8.5px;letter-spacing:.5em;margin-top:4px;font-weight:400;opacity:.85}
+.nav-left,.nav-right{display:flex;gap:26px;align-items:center}
+.nav-right{justify-content:flex-end}
+.nav-btn{font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;font-weight:500;padding:6px 2px;position:relative}
+.nav-btn::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:currentColor;transition:right .4s cubic-bezier(.2,.8,.2,1)}
+.nav-btn:hover::after,.nav-btn.is-active::after{right:0}
+
+.chrome-bottom{position:fixed;bottom:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:18px 40px;pointer-events:none;mix-blend-mode:difference;color:#f4efe6}
+.chrome-bottom > *{pointer-events:auto}
+.crumb{font-size:10px;letter-spacing:.3em;text-transform:uppercase;display:flex;gap:10px;align-items:center}
+.crumb .dot{width:4px;height:4px;border-radius:50%;background:currentColor;opacity:.5}
+
+/* ——— Route system ——— */
+main{position:relative;min-height:100vh}
+.route{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .7s ease}
+.route.is-on{opacity:1;pointer-events:auto;position:relative}
+
+/* ——— HOME ——— */
+.hero{height:100vh;position:relative;overflow:hidden;background:var(--ink)}
+.hero-img{position:absolute;inset:0;background-size:cover;background-position:center 28%;filter:grayscale(.1) contrast(1.02);transform:scale(1.04);transition:transform 1.4s ease}
+.hero:hover .hero-img{transform:scale(1.06)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,12,10,.35) 0%,rgba(14,12,10,0) 25%,rgba(14,12,10,0) 55%,rgba(14,12,10,.7) 100%)}
+.hero-copy{position:absolute;left:40px;right:40px;bottom:90px;z-index:3;color:#f4efe6;display:grid;grid-template-columns:1fr auto;align-items:end;gap:60px}
+.hero h1{font-family:var(--serif);font-size:clamp(64px,11vw,188px);font-weight:300;letter-spacing:-.02em;line-height:.88;margin-bottom:24px}
+.hero h1 em{font-style:italic;font-weight:300;opacity:.95}
+.hero-sub{max-width:380px;text-align:right;font-size:13.5px;line-height:1.6;opacity:.9}
+.hero-tag{position:absolute;top:55%;right:40px;transform:rotate(90deg) translateX(50%);transform-origin:right top;z-index:3;color:#f4efe6;font-size:10px;letter-spacing:.5em;opacity:.7}
+.hero-marquee{position:absolute;top:100px;left:0;right:0;z-index:3;color:#f4efe6;white-space:nowrap;overflow:hidden;font-family:var(--serif);font-size:22px;letter-spacing:.4em;opacity:.55}
+.hero-marquee span{display:inline-block;animation:slide 38s linear infinite;padding-right:60px}
+@keyframes slide{to{transform:translateX(-50%)}}
+.scroll-cue{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);z-index:4;color:#f4efe6;font-size:9.5px;letter-spacing:.4em;display:flex;flex-direction:column;align-items:center;gap:12px;opacity:.8}
+.scroll-cue::after{content:"";width:1px;height:36px;background:currentColor;animation:drip 2.4s ease-in-out infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}50.01%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* Manifesto */
+.manifesto{padding:180px 40px 180px;background:var(--bone)}
+.manifesto-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 3fr;gap:80px;align-items:start}
+.manifesto .label{color:var(--mute)}
+.manifesto p.lead{font-family:var(--serif);font-size:clamp(32px,3.8vw,54px);font-weight:300;line-height:1.14;letter-spacing:-.01em;text-wrap:balance}
+.manifesto p.lead em{font-style:italic;color:var(--accent)}
+.manifesto .meta{margin-top:46px;display:flex;gap:40px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+
+/* Collection showcase - scroll pinned */
+.showcase{position:relative;background:var(--ink);color:var(--bone)}
+.showcase-track{position:sticky;top:0;height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;overflow:hidden}
+.showcase-imgs{position:relative;height:100%}
+.showcase-imgs .slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity .9s ease, transform 1.2s ease;transform:scale(1.06)}
+.showcase-imgs .slide.on{opacity:1;transform:scale(1)}
+.showcase-txt{padding:0 60px 0 80px;position:relative}
+.showcase-txt .slide{position:absolute;inset:0;padding:0 60px 0 80px;display:flex;flex-direction:column;justify-content:center;opacity:0;transform:translateY(20px);transition:opacity .6s ease, transform .6s ease}
+.showcase-txt .slide.on{opacity:1;transform:none}
+.showcase-txt .slide{position:absolute;top:50%;transform:translateY(calc(-50% + 20px))}
+.showcase-txt .slide.on{transform:translateY(-50%)}
+.showcase-index{font-family:var(--mono);font-size:10.5px;letter-spacing:.3em;color:var(--gold);margin-bottom:22px}
+.showcase-title{font-family:var(--serif);font-size:clamp(52px,6vw,92px);font-weight:300;line-height:.95;margin-bottom:14px;letter-spacing:-.01em}
+.showcase-title em{font-style:italic}
+.showcase-sub{font-family:var(--serif);font-style:italic;font-size:22px;opacity:.7;margin-bottom:32px}
+.showcase-body{font-size:14px;line-height:1.7;max-width:420px;opacity:.78;margin-bottom:40px}
+.showcase-link{font-size:11px;letter-spacing:.32em;text-transform:uppercase;border-bottom:1px solid currentColor;padding-bottom:6px;display:inline-block}
+.showcase-nav{position:absolute;left:80px;bottom:60px;display:flex;gap:18px;z-index:4}
+.showcase-dot{width:30px;height:1px;background:rgba(244,239,230,.25);transition:background .4s}
+.showcase-dot.on{background:var(--bone)}
+.showcase-progress{position:absolute;right:60px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:10px;letter-spacing:.2em;opacity:.5;writing-mode:vertical-rl;transform-origin:center;transform:translateY(-50%) rotate(180deg)}
+.showcase-spacer{height:300vh}  /* scroll distance */
+
+/* Editorial strip */
+.strip{background:var(--bone);padding:140px 40px}
+.strip-inner{max-width:1440px;margin:0 auto}
+.strip-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:60px}
+.strip-head h2{font-family:var(--serif);font-size:clamp(44px,5vw,72px);font-weight:300;line-height:1;letter-spacing:-.01em}
+.strip-head h2 em{font-style:italic}
+.strip-head p{justify-self:end;max-width:360px;font-size:13.5px;line-height:1.65;color:#3a342c}
+.strip-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
+.tile{overflow:hidden;position:relative;background:var(--ink)}
+.tile img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s ease;filter:grayscale(.05)}
+.tile:hover img{transform:scale(1.04)}
+.tile .cap{position:absolute;left:16px;bottom:14px;color:#f4efe6;font-size:10px;letter-spacing:.3em;text-transform:uppercase;mix-blend-mode:screen}
+.tile.a{grid-column:span 5;aspect-ratio:4/5}
+.tile.b{grid-column:span 4;aspect-ratio:3/4;margin-top:60px}
+.tile.c{grid-column:span 3;aspect-ratio:3/5}
+.tile.d{grid-column:span 4;aspect-ratio:4/3;margin-top:-40px}
+.tile.e{grid-column:span 4;aspect-ratio:1}
+.tile.f{grid-column:span 4;aspect-ratio:4/5;margin-top:-80px}
+
+/* Process section */
+.process{background:var(--paper);padding:180px 40px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.process-inner{max-width:1200px;margin:0 auto}
+.process h2{font-family:var(--serif);font-size:clamp(48px,5.4vw,84px);font-weight:300;line-height:.98;letter-spacing:-.01em;margin-bottom:90px;max-width:820px}
+.process h2 em{font-style:italic}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;counter-reset:step}
+.step{counter-increment:step;position:relative;padding-top:40px;border-top:1px solid var(--rule)}
+.step::before{content:"0" counter(step);font-family:var(--mono);font-size:10px;letter-spacing:.3em;position:absolute;top:-10px;left:0;background:var(--paper);padding-right:14px;color:var(--accent)}
+.step h3{font-family:var(--serif);font-weight:400;font-size:26px;margin-bottom:14px;letter-spacing:-.005em}
+.step p{font-size:13px;line-height:1.65;color:#4a4339}
+.step .dur{margin-top:22px;font-family:var(--mono);font-size:10px;color:var(--mute)}
+
+/* Press tape marquee */
+.tape{overflow:hidden;background:var(--ink);color:var(--bone);padding:34px 0;border-top:1px solid #2a251e}
+.tape-inner{white-space:nowrap;display:flex;animation:tape 50s linear infinite}
+.tape span{font-family:var(--serif);font-size:30px;font-weight:300;padding:0 30px;letter-spacing:.05em;opacity:.82}
+.tape span em{font-style:italic;color:var(--gold);opacity:1}
+.tape .sep{font-family:var(--mono);font-size:12px;opacity:.4;padding:0 20px;align-self:center}
+@keyframes tape{to{transform:translateX(-50%)}}
+
+/* Notable clients */
+.clients{background:var(--ink);color:var(--bone);padding:140px 40px}
+.clients-inner{max-width:1440px;margin:0 auto}
+.clients-head{display:grid;grid-template-columns:1fr 2fr;gap:60px;margin-bottom:80px;align-items:end}
+.clients-head h2{font-family:var(--serif);font-size:clamp(48px,6vw,96px);font-weight:300;line-height:.95;letter-spacing:-.01em}
+.clients-head h2 em{font-style:italic;color:var(--gold)}
+.clients-head p{font-size:13.5px;line-height:1.7;opacity:.7;max-width:420px}
+.clients-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#2a251e}
+.client{background:var(--ink);aspect-ratio:4/5;padding:28px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;transition:background .4s}
+.client::before{content:"";position:absolute;inset:0;background-size:cover;background-position:center;opacity:.25;transition:opacity .5s;filter:grayscale(1)}
+.client:hover::before{opacity:.7;filter:grayscale(0)}
+.client .num{font-family:var(--mono);font-size:10px;letter-spacing:.3em;opacity:.5;position:relative;z-index:2}
+.client .bottom{position:relative;z-index:2}
+.client h4{font-family:var(--serif);font-size:28px;font-weight:300;line-height:1;margin-bottom:6px}
+.client .role{font-size:10px;letter-spacing:.28em;text-transform:uppercase;opacity:.6}
+
+/* Booking / CTA */
+.booking{background:var(--bone);padding:180px 40px}
+.booking-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:5fr 4fr;gap:80px;align-items:center}
+.booking h2{font-family:var(--serif);font-size:clamp(48px,5.6vw,96px);font-weight:300;line-height:.95;letter-spacing:-.015em}
+.booking h2 em{font-style:italic;color:var(--accent)}
+.booking p.desc{margin:28px 0 40px;font-size:14.5px;line-height:1.65;max-width:480px;color:#3a342c}
+.book-btn{background:var(--ink);color:var(--bone);padding:20px 40px;font-size:11px;letter-spacing:.32em;text-transform:uppercase;display:inline-flex;align-items:center;gap:14px;transition:background .4s}
+.book-btn:hover{background:var(--accent)}
+.book-btn span.arrow{transition:transform .4s}
+.book-btn:hover span.arrow{transform:translateX(6px)}
+.book-card{background:var(--paper);padding:44px;border:1px solid var(--rule);position:relative}
+.book-card::before{content:"";position:absolute;top:-1px;right:-1px;width:40px;height:40px;border-top:1px solid var(--accent);border-right:1px solid var(--accent)}
+.book-card::after{content:"";position:absolute;bottom:-1px;left:-1px;width:40px;height:40px;border-bottom:1px solid var(--accent);border-left:1px solid var(--accent)}
+.book-card .label{color:var(--accent);margin-bottom:24px}
+.book-card ul{list-style:none;display:grid;gap:16px}
+.book-card li{display:grid;grid-template-columns:1fr auto;gap:20px;padding-bottom:16px;border-bottom:1px dashed var(--rule);align-items:baseline}
+.book-card li:last-child{border:0;padding:0}
+.book-card li .name{font-family:var(--serif);font-size:19px;font-weight:400}
+.book-card li .detail{font-family:var(--mono);font-size:11px;color:var(--mute)}
+
+/* Footer */
+footer{background:var(--ink);color:var(--bone);padding:90px 40px 40px}
+.foot-inner{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;padding-bottom:80px;border-bottom:1px solid #2a251e}
+.foot-brand .wordmark{font-size:32px;text-align:left}
+.foot-brand .wordmark small{letter-spacing:.5em}
+.foot-brand p{margin-top:30px;font-size:13px;line-height:1.6;opacity:.6;max-width:360px}
+.foot-col h5{font-size:10px;letter-spacing:.32em;text-transform:uppercase;font-weight:500;opacity:.5;margin-bottom:22px}
+.foot-col ul{list-style:none;display:grid;gap:10px}
+.foot-col li{font-size:13px;opacity:.85}
+.foot-col li a:hover{color:var(--gold)}
+.foot-bottom{max-width:1440px;margin:30px auto 0;display:flex;justify-content:space-between;font-size:10px;letter-spacing:.3em;text-transform:uppercase;opacity:.45}
+
+/* ——— COLLECTION PAGE ——— */
+.coll-hero{padding:160px 40px 80px;background:var(--bone)}
+.coll-hero-inner{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end}
+.coll-hero .label{color:var(--mute);margin-bottom:22px}
+.coll-hero h1{font-family:var(--serif);font-size:clamp(72px,10vw,172px);font-weight:300;line-height:.88;letter-spacing:-.02em}
+.coll-hero h1 em{font-style:italic;color:var(--accent)}
+.coll-hero .lede{font-size:15px;line-height:1.7;max-width:440px;color:#3a342c;align-self:start;justify-self:end;padding-top:40px}
+.coll-hero .meta{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin-top:80px;padding-top:30px;border-top:1px solid var(--rule)}
+.coll-hero .meta span{font-family:var(--mono);font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--mute);display:block;margin-bottom:8px}
+.coll-hero .meta strong{font-family:var(--serif);font-weight:400;font-size:22px;letter-spacing:-.005em}
+
+.coll-grid{padding:80px 40px 180px;background:var(--bone)}
+.coll-grid-inner{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:repeat(12,1fr);gap:32px;row-gap:100px}
+.garment{display:flex;flex-direction:column;gap:18px;cursor:pointer}
+.garment .img{overflow:hidden;background:var(--ink);aspect-ratio:3/4;position:relative}
+.garment .img > div{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 1.2s ease}
+.garment:hover .img > div{transform:scale(1.04)}
+.garment .num{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--accent)}
+.garment .name{font-family:var(--serif);font-size:22px;font-weight:400;line-height:1.1;margin-top:2px}
+.garment .det{font-size:11px;color:var(--mute);letter-spacing:.16em;text-transform:uppercase;margin-top:4px}
+.garment.xl{grid-column:span 7}
+.garment.lg{grid-column:span 5;margin-top:120px}
+.garment.md{grid-column:span 4}
+.garment.md2{grid-column:span 5;margin-top:80px}
+.garment.md3{grid-column:span 3}
+.garment.xl2{grid-column:span 8;margin-top:60px}
+.garment.md4{grid-column:span 4}
+
+/* ——— PRODUCT DETAIL ——— */
+.pd{background:var(--bone);padding-top:140px;min-height:100vh}
+.pd-inner{max-width:1440px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1.25fr 1fr;gap:80px}
+.pd-imgs{display:grid;gap:16px}
+.pd-imgs .main{aspect-ratio:4/5;background-size:cover;background-position:center;background-color:var(--ink)}
+.pd-imgs .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pd-imgs .row div{aspect-ratio:4/5;background-size:cover;background-position:center;background-color:var(--ink)}
+.pd-info{position:sticky;top:140px;align-self:start}
+.pd-info .label{color:var(--mute);margin-bottom:18px}
+.pd-info h1{font-family:var(--serif);font-size:clamp(48px,5vw,72px);font-weight:300;line-height:.95;letter-spacing:-.01em}
+.pd-info h1 em{font-style:italic}
+.pd-info .tagline{margin-top:16px;font-family:var(--serif);font-style:italic;font-size:19px;color:var(--mute)}
+.pd-info .divider{height:1px;background:var(--rule);margin:36px 0}
+.pd-info p.body{font-size:14.5px;line-height:1.7;color:#3a342c}
+.spec{margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:12px 32px}
+.spec dt{font-family:var(--mono);font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--mute);padding-top:10px;border-top:1px solid var(--rule);padding-bottom:4px}
+.spec dd{font-family:var(--serif);font-size:17px;font-weight:400}
+.swatches{margin-top:36px}
+.swatches .h{font-family:var(--mono);font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--mute);margin-bottom:12px}
+.swatches .row{display:flex;gap:10px}
+.swatches .sw{width:36px;height:36px;border-radius:50%;border:1px solid var(--rule);position:relative;cursor:pointer}
+.swatches .sw.on{outline:1px solid var(--ink);outline-offset:3px}
+.cta-row{margin-top:40px;display:flex;gap:16px}
+.cta-row .book-btn{padding:18px 32px;flex:1;justify-content:space-between}
+.cta-row .ghost{background:transparent;color:var(--ink);border:1px solid var(--ink);padding:18px 32px;font-size:11px;letter-spacing:.32em;text-transform:uppercase}
+
+/* ——— NOTABLE CLIENTS PAGE ——— */
+.notable{background:var(--ink);color:var(--bone);padding:160px 40px 120px;min-height:100vh}
+.notable-inner{max-width:1440px;margin:0 auto}
+.notable h1{font-family:var(--serif);font-size:clamp(64px,9vw,156px);font-weight:300;line-height:.9;letter-spacing:-.02em;max-width:1100px;margin-bottom:60px}
+.notable h1 em{font-style:italic;color:var(--gold)}
+.notable .intro{max-width:560px;font-size:14px;line-height:1.7;opacity:.7;margin-bottom:100px;margin-left:auto}
+.notable-list{border-top:1px solid #2a251e}
+.notable-row{display:grid;grid-template-columns:60px 2fr 3fr 1fr auto;gap:40px;align-items:center;padding:34px 0;border-bottom:1px solid #2a251e;position:relative;transition:padding .4s}
+.notable-row:hover{padding-left:20px}
+.notable-row .n{font-family:var(--mono);font-size:11px;opacity:.5}
+.notable-row .name{font-family:var(--serif);font-size:32px;font-weight:300;letter-spacing:-.005em}
+.notable-row .name em{font-style:italic}
+.notable-row .occ{font-size:13px;opacity:.7}
+.notable-row .piece{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;opacity:.55}
+.notable-row .yr{font-family:var(--mono);font-size:11px;opacity:.5}
+.notable-row .peek{position:absolute;right:-20px;top:50%;transform:translate(100%,-50%) scale(.8);width:160px;aspect-ratio:3/4;background-size:cover;background-position:center;opacity:0;pointer-events:none;transition:all .5s cubic-bezier(.2,.8,.2,1);z-index:2}
+.notable-row:hover .peek{opacity:1;transform:translate(0,-50%) scale(1)}
+
+/* ——— ABOUT ——— */
+.about{background:var(--bone);padding-top:140px}
+.about-hero{padding:40px 40px 100px}
+.about-hero-inner{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-hero .img{aspect-ratio:3/4;background-size:cover;background-position:center;background-color:var(--ink)}
+.about-hero .text .label{color:var(--mute);margin-bottom:30px}
+.about-hero h1{font-family:var(--serif);font-size:clamp(52px,6vw,88px);font-weight:300;line-height:1;letter-spacing:-.01em}
+.about-hero h1 em{font-style:italic;color:var(--accent)}
+.about-hero p.quote{margin-top:40px;font-family:var(--serif);font-style:italic;font-size:22px;line-height:1.4;color:#3a342c}
+.about-hero .sig{margin-top:30px;font-family:var(--serif);font-size:18px;letter-spacing:.02em}
+.about-hero .sig small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--mute);font-style:normal}
+
+.about-story{padding:120px 40px;background:var(--paper);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.story-inner{max-width:900px;margin:0 auto;font-family:var(--serif);font-size:22px;line-height:1.55;font-weight:300;color:#2a251e}
+.story-inner p{margin-bottom:28px;text-wrap:pretty}
+.story-inner .drop::first-letter{font-size:88px;float:left;line-height:.9;padding:6px 12px 0 0;color:var(--accent);font-style:italic}
+.story-stats{max-width:1200px;margin:80px auto 0;display:grid;grid-template-columns:repeat(4,1fr);gap:40px;padding-top:60px;border-top:1px solid var(--rule)}
+.stat .n{font-family:var(--serif);font-size:64px;font-weight:300;line-height:1;letter-spacing:-.02em}
+.stat .n em{font-style:italic;color:var(--accent)}
+.stat .l{font-family:var(--mono);font-size:10px;letter-spacing:.28em;text-transform:uppercase;margin-top:8px;color:var(--mute)}
+
+/* ——— APPOINTMENT ——— */
+.appt{background:var(--bone);padding:140px 40px 100px;min-height:100vh}
+.appt-inner{max-width:1200px;margin:0 auto}
+.appt-head{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:80px}
+.appt-head .label{color:var(--mute);margin-bottom:24px}
+.appt-head h1{font-family:var(--serif);font-size:clamp(52px,6vw,92px);font-weight:300;line-height:.95;letter-spacing:-.01em}
+.appt-head h1 em{font-style:italic;color:var(--accent)}
+.appt-head p{font-size:14px;line-height:1.65;color:#3a342c}
+
+.appt-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.appt-form{background:var(--paper);padding:48px;border:1px solid var(--rule)}
+.appt-form .step-indicator{display:flex;gap:12px;margin-bottom:36px;font-family:var(--mono);font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--mute)}
+.appt-form .step-indicator .on{color:var(--accent)}
+.appt-form fieldset{border:0;margin-bottom:28px}
+.appt-form legend{font-family:var(--mono);font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--mute);margin-bottom:14px}
+.appt-form .opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.appt-form .opt{border:1px solid var(--rule);padding:18px 20px;cursor:pointer;transition:all .3s;background:var(--bone)}
+.appt-form .opt:hover{border-color:var(--ink)}
+.appt-form .opt.on{background:var(--ink);color:var(--bone);border-color:var(--ink)}
+.appt-form .opt .ot{font-family:var(--serif);font-size:18px;font-weight:400}
+.appt-form .opt .od{font-size:11px;opacity:.7;margin-top:4px;letter-spacing:.05em}
+.appt-form .cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:8px}
+.appt-form .cal .d{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:12px;border:1px solid transparent;cursor:pointer;color:#3a342c}
+.appt-form .cal .d:hover{border-color:var(--ink)}
+.appt-form .cal .d.on{background:var(--ink);color:var(--bone)}
+.appt-form .cal .d.off{opacity:.25;pointer-events:none}
+.appt-form .cal .dow{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);text-align:center}
+.appt-form .times{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.appt-form .time{text-align:center;padding:12px 4px;border:1px solid var(--rule);font-family:var(--mono);font-size:11px;letter-spacing:.08em;cursor:pointer;background:var(--bone);transition:all .3s}
+.appt-form .time.on{background:var(--ink);color:var(--bone);border-color:var(--ink)}
+.appt-form input[type=text],.appt-form input[type=email]{width:100%;padding:14px 0;border:0;border-bottom:1px solid var(--rule);background:transparent;font:inherit;font-size:14.5px;outline:none;transition:border-color .3s}
+.appt-form input:focus{border-color:var(--ink)}
+.appt-form .fields{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.appt-form .submit{margin-top:28px;width:100%}
+
+.appt-summary{position:sticky;top:140px;padding:40px;background:var(--ink);color:var(--bone)}
+.appt-summary h3{font-family:var(--serif);font-size:34px;font-weight:300;margin-bottom:6px}
+.appt-summary .sub{font-family:var(--serif);font-style:italic;font-size:16px;opacity:.6;margin-bottom:32px}
+.summary-rows{display:grid;gap:18px}
+.summary-row{display:grid;grid-template-columns:auto 1fr;gap:30px;align-items:baseline;padding-bottom:14px;border-bottom:1px dashed #2a251e}
+.summary-row .l{font-family:var(--mono);font-size:10px;letter-spacing:.3em;text-transform:uppercase;opacity:.5}
+.summary-row .v{font-family:var(--serif);font-size:17px;text-align:right}
+.summary-row .v.empty{opacity:.3;font-style:italic}
+.summary-note{margin-top:36px;padding:20px;background:#1a1714;font-size:12px;line-height:1.6;opacity:.7}
+
+/* ——— Tweaks panel ——— */
+.tweaks-panel{position:fixed;right:24px;bottom:80px;z-index:200;background:var(--ink);color:var(--bone);padding:22px;width:280px;display:none;font-family:var(--sans);box-shadow:0 30px 60px rgba(0,0,0,.35)}
+.tweaks-panel.on{display:block}
+.tweaks-panel h4{font-family:var(--serif);font-size:19px;font-weight:400;margin-bottom:4px}
+.tweaks-panel .sub{font-family:var(--mono);font-size:9px;letter-spacing:.3em;text-transform:uppercase;opacity:.5;margin-bottom:20px}
+.tweak-row{margin-bottom:16px}
+.tweak-row label{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.26em;text-transform:uppercase;opacity:.7;margin-bottom:8px}
+.tweak-row .swatch-row{display:flex;gap:8px}
+.tweak-row .sw{width:28px;height:28px;border-radius:50%;border:1px solid #2a251e;cursor:pointer}
+.tweak-row .sw.on{outline:1px solid var(--bone);outline-offset:2px}
+.tweak-row select{width:100%;background:transparent;color:var(--bone);border:1px solid #2a251e;padding:8px;font:inherit;font-size:12px}
+
+@media (max-width:900px){
+  .chrome-top{grid-template-columns:1fr auto;padding:16px 20px}
+  .nav-left,.nav-right{display:none}
+  .hero-copy{grid-template-columns:1fr;gap:20px;bottom:60px;left:20px;right:20px}
+  .hero-sub{text-align:left;max-width:100%}
+  .manifesto{padding:100px 20px}
+  .manifesto-inner{grid-template-columns:1fr;gap:30px}
+  .showcase-track{grid-template-columns:1fr}
+  .showcase-txt{padding:60px 20px}
+  .strip{padding:80px 20px}
+  .strip-head{grid-template-columns:1fr;gap:20px}
+  .strip-grid{grid-template-columns:1fr}
+  .tile{grid-column:span 12 !important;margin:0 !important;aspect-ratio:4/5 !important}
+  .process{padding:100px 20px}
+  .steps{grid-template-columns:1fr 1fr;gap:30px}
+  .clients-grid{grid-template-columns:1fr 1fr}
+  .booking-inner,.coll-hero-inner,.about-hero-inner,.appt-grid,.appt-head,.pd-inner{grid-template-columns:1fr;gap:40px}
+  .foot-inner{grid-template-columns:1fr 1fr;gap:30px}
+  .coll-grid-inner .garment{grid-column:span 12 !important;margin-top:0 !important}
+  .story-stats{grid-template-columns:1fr 1fr}
+  .notable-row{grid-template-columns:auto 1fr;gap:16px}
+  .notable-row .occ,.notable-row .piece,.notable-row .yr,.notable-row .peek{display:none}
+  .hero-tag,.hero-marquee{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- Top chrome -->
+<header class="chrome-top" data-screen-label="Global nav">
+  <nav class="nav-left">
+    <a class="nav-btn" data-go="home">Index</a>
+    <a class="nav-btn" data-go="collection">Collections</a>
+    <a class="nav-btn" data-go="about">The Man &amp; The Brand</a>
+  </nav>
+  <a class="wordmark" data-go="home">KYRIS KUSTOMS<small>Est. MMXX · Bespoke</small></a>
+  <nav class="nav-right">
+    <a class="nav-btn" data-go="notable">Notable Clients</a>
+    <a class="nav-btn" data-go="product">Archive</a>
+    <a class="nav-btn" data-go="appt" style="color:var(--accent)">Book a Fitting</a>
+  </nav>
+</header>
+
+<!-- Bottom chrome -->
+<div class="chrome-bottom">
+  <div class="crumb" id="crumb"><span>Kyris Kustoms</span><span class="dot"></span><span id="crumb-page">Index</span></div>
+  <div class="crumb"><span>Instagram</span><span class="dot"></span><span>@kyriskustoms</span></div>
+</div>
+
+<main>
+
+<!-- ══════════ HOME ══════════ -->
+<section class="route is-on" data-route="home" data-screen-label="01 Home">
+
+  <!-- Hero -->
+  <div class="hero" data-screen-label="Home / Hero">
+    <div class="hero-img" style="background-image:url('https://static.wixstatic.com/media/6a3a01_1d1f3d83db104d4a85d20d05a3197aaf~mv2.jpg/v1/fill/w_2200,h_1400,al_c,q_90,enc_auto/kk.jpg')"></div>
+    <div class="hero-marquee"><span>BESPOKE&nbsp;&nbsp;·&nbsp;&nbsp;HAND-CANVASSED&nbsp;&nbsp;·&nbsp;&nbsp;MADE IN STUDIO&nbsp;&nbsp;·&nbsp;&nbsp;SINCE 2020&nbsp;&nbsp;·&nbsp;&nbsp;BESPOKE&nbsp;&nbsp;·&nbsp;&nbsp;HAND-CANVASSED&nbsp;&nbsp;·&nbsp;&nbsp;MADE IN STUDIO&nbsp;&nbsp;·&nbsp;&nbsp;SINCE 2020&nbsp;&nbsp;·&nbsp;&nbsp;</span></div>
+    <div class="hero-tag">N° 001 — THE ATELIER</div>
+    <div class="hero-copy">
+      <h1>Tailored<br/><em>to a man</em>,<br/>not a size.</h1>
+      <div class="hero-sub">
+        <div class="label" style="margin-bottom:12px;opacity:.7">OPULENT BUSINESS WEAR</div>
+        Bespoke garments cut by hand for the few who still believe a suit should outlast a season, a decade, a room.
+      </div>
+    </div>
+    <div class="scroll-cue">SCROLL</div>
+  </div>
+
+  <!-- Manifesto -->
+  <div class="manifesto" data-screen-label="Home / Manifesto">
+    <div class="manifesto-inner">
+      <div>
+        <div class="label">Manifesto · 001</div>
+        <div class="mono" style="margin-top:10px;color:var(--mute)">KK—MF/01</div>
+      </div>
+      <div>
+        <p class="lead">We do not make clothing. We make <em>the clothes</em> a man returns to when the occasion refuses to be ordinary — the second skin of boardrooms, weddings, and the quiet Sunday breakfast after.</p>
+        <div class="meta">
+          <span>— Kyris, Founder</span>
+          <span>156 West Studio Lane</span>
+          <span>By appointment only</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Collection showcase (scroll-pinned) -->
+  <div class="showcase" id="showcase" data-screen-label="Home / Collection showcase">
+    <div class="showcase-spacer">
+      <div class="showcase-track">
+        <div class="showcase-imgs" id="sc-imgs">
+          <div class="slide on" style="background-image:url('https://static.wixstatic.com/media/6a3a01_f82cc74e688d4155995c9a848060e141~mv2.jpg/v1/fill/w_1600,h_2200,al_c,q_90,enc_auto/w.jpg')"></div>
+          <div class="slide" style="background-image:url('https://static.wixstatic.com/media/6a3a01_d1c24d9920274bc690518fa6d48893b5~mv2.jpg/v1/fill/w_1600,h_2200,al_c,q_90,enc_auto/g.jpg')"></div>
+          <div class="slide" style="background-image:url('https://static.wixstatic.com/media/6a3a01_14f2cdbd328a45f78a584a1959ef0e76~mv2.jpg/v1/fill/w_1600,h_2200,al_c,q_90,enc_auto/c.jpg')"></div>
+        </div>
+        <div class="showcase-txt" id="sc-txt">
+          <div class="slide on">
+            <div class="showcase-index">N° I — FORMAL WEAR</div>
+            <h2 class="showcase-title">White <em>Dreams</em></h2>
+            <div class="showcase-sub">For the moment that becomes a memory.</div>
+            <p class="showcase-body">Ivory wools, silk shawls, mother-of-pearl. The Formal collection is cut for weddings, galas, and the kind of evening that demands a little ceremony.</p>
+            <a class="showcase-link" data-go="collection" data-collection="white">View the collection →</a>
+          </div>
+          <div class="slide">
+            <div class="showcase-index">N° II — BUSINESS WEAR</div>
+            <h2 class="showcase-title">Grey <em>Spirit</em></h2>
+            <div class="showcase-sub">The quiet uniform of quiet power.</div>
+            <p class="showcase-body">Super 130s worsteds, half-canvas construction, a drape that reads confidence across the room before a word is spoken. Boardroom first, everywhere after.</p>
+            <a class="showcase-link" data-go="collection" data-collection="grey">View the collection →</a>
+          </div>
+          <div class="slide">
+            <div class="showcase-index">N° III — CASUAL WEAR</div>
+            <h2 class="showcase-title">Off the <em>Hour</em></h2>
+            <div class="showcase-sub">When the tie comes off and the tailoring stays.</div>
+            <p class="showcase-body">Unstructured blazers, washed linens, knitwear that travels. Cut with the same hand as the suits, made for the man outside the calendar.</p>
+            <a class="showcase-link" data-go="collection" data-collection="casual">View the collection →</a>
+          </div>
+        </div>
+        <div class="showcase-nav" id="sc-nav">
+          <span class="showcase-dot on"></span><span class="showcase-dot"></span><span class="showcase-dot"></span>
+        </div>
+        <div class="showcase-progress" id="sc-prog">01 / 03</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Editorial strip -->
+  <div class="strip" data-screen-label="Home / Editorial">
+    <div class="strip-inner">
+      <div class="strip-head">
+        <h2>Inside <em>the studio</em>.</h2>
+        <p>Every garment begins with a 90-minute consultation, a bolt of English cloth, and the quiet arithmetic of a measuring tape. Nothing leaves this room untouched by hand.</p>
+      </div>
+      <div class="strip-grid">
+        <div class="tile a" style="background-image:url('https://static.wixstatic.com/media/6a3a01_6c5a518633b6426691b48a1db982febc~mv2.jpg/v1/fill/w_900,h_1100,al_c,q_85,enc_auto/1.jpg');background-size:cover;background-position:center"><span class="cap">Ivory three-piece · W.D. 02</span></div>
+        <div class="tile b" style="background-image:url('https://static.wixstatic.com/media/6a3a01_94f8eb0a7c9a442e8ecc8a971b0db298~mv2.jpg/v1/fill/w_900,h_1100,al_c,q_85,enc_auto/2.jpg');background-size:cover;background-position:center"><span class="cap">Peak lapel study</span></div>
+        <div class="tile c" style="background-image:url('https://static.wixstatic.com/media/6a3a01_62504004792847c590a00280283d24e5~mv2.jpg/v1/fill/w_700,h_1100,al_c,q_85,enc_auto/3.jpg');background-size:cover;background-position:center"><span class="cap">Pocket square, hand-rolled</span></div>
+        <div class="tile d" style="background-image:url('https://static.wixstatic.com/media/6a3a01_f5b638a5126a4501a064153605d614c1~mv2.jpg/v1/fill/w_1100,h_800,al_c,q_85,enc_auto/4.jpg');background-size:cover;background-position:center"><span class="cap">Atelier · afternoon light</span></div>
+        <div class="tile e" style="background-image:url('https://static.wixstatic.com/media/6a3a01_a00ffbf262b942b5bc3e811d5cfd403b~mv2.jpg/v1/fill/w_900,h_900,al_c,q_85,enc_auto/5.jpg');background-size:cover;background-position:center"><span class="cap">Waistcoat — Grey Spirit</span></div>
+        <div class="tile f" style="background-image:url('https://static.wixstatic.com/media/6a3a01_a07d611d18634d6192202bdcf3a77693~mv2.jpg/v1/fill/w_800,h_1100,al_c,q_85,enc_auto/6.jpg');background-size:cover;background-position:center"><span class="cap">Shoulder roll, 4mm</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Process -->
+  <div class="process" data-screen-label="Home / Process">
+    <div class="process-inner">
+      <h2>Four rooms. <em>Fourteen weeks.</em> One garment that could not belong to anyone else.</h2>
+      <div class="steps">
+        <div class="step">
+          <h3>The Consultation</h3>
+          <p>A conversation before a tape. We discuss occasion, wardrobe, the way you move in a room. Cloth is laid out; nothing is hurried.</p>
+          <div class="dur">90 min · in studio</div>
+        </div>
+        <div class="step">
+          <h3>The Measuring</h3>
+          <p>Thirty-two measurements taken by hand, a posture study, notes on how your shoulder falls. No two blocks are alike.</p>
+          <div class="dur">45 min · in studio</div>
+        </div>
+        <div class="step">
+          <h3>The Fittings</h3>
+          <p>Two — sometimes three — baste and forward fittings. The garment is built around you, not the other way around.</p>
+          <div class="dur">4–6 weeks · by appt.</div>
+        </div>
+        <div class="step">
+          <h3>The Finishing</h3>
+          <p>Hand-sewn buttonholes, pick-stitched lapels, a lining cut from silk you chose. Delivered in a garment bag that will outlast most jackets.</p>
+          <div class="dur">week 14 · delivered</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Press tape -->
+  <div class="tape">
+    <div class="tape-inner">
+      <span>Dressing <em>the uncompromising</em></span><span class="sep">/ 001</span>
+      <span>Athletes, actors, <em>heads of boards</em></span><span class="sep">/ 002</span>
+      <span>Made once. <em>Made well.</em></span><span class="sep">/ 003</span>
+      <span>Dressing <em>the uncompromising</em></span><span class="sep">/ 001</span>
+      <span>Athletes, actors, <em>heads of boards</em></span><span class="sep">/ 002</span>
+      <span>Made once. <em>Made well.</em></span><span class="sep">/ 003</span>
+    </div>
+  </div>
+
+  <!-- Clients preview -->
+  <div class="clients" data-screen-label="Home / Clients preview">
+    <div class="clients-inner">
+      <div class="clients-head">
+        <h2>Worn by the <em>uncompromising</em>.</h2>
+        <p>A quiet list of men who came for a suit and stayed for the next decade. Names we don't advertise — but that you'd recognise by the cut of their jacket.</p>
+      </div>
+      <div class="clients-grid">
+        <a class="client" data-go="notable" style="--bg:url('https://static.wixstatic.com/media/6a3a01_624c2916eee246d5a7c28fd94693008f~mv2.jpg/v1/fill/w_800,h_1000,al_c,q_85,enc_auto/c1.jpg')">
+          <div class="num">N° 001</div><div class="bottom"><h4>M. Adekunle</h4><div class="role">Head of Industry</div></div>
+        </a>
+        <a class="client" data-go="notable">
+          <div class="num">N° 014</div><div class="bottom"><h4>The Ambassador</h4><div class="role">Diplomatic Corps</div></div>
+        </a>
+        <a class="client" data-go="notable">
+          <div class="num">N° 023</div><div class="bottom"><h4>R. Osei</h4><div class="role">Film &amp; Stage</div></div>
+        </a>
+        <a class="client" data-go="notable">
+          <div class="num">N° 041</div><div class="bottom"><h4>Captain, 1st XI</h4><div class="role">International Sport</div></div>
+        </a>
+      </div>
+      <div style="text-align:center;margin-top:60px"><a class="nav-btn" data-go="notable" style="font-size:11px">→ See the full list</a></div>
+    </div>
+  </div>
+
+  <!-- Booking CTA -->
+  <div class="booking" data-screen-label="Home / Booking">
+    <div class="booking-inner">
+      <div>
+        <div class="label" style="color:var(--mute);margin-bottom:30px">An appointment, not a purchase</div>
+        <h2>Sit down. <em>Let the cloth decide.</em></h2>
+        <p class="desc">The studio is open Wednesday through Saturday, strictly by appointment. First consultations are without obligation; we'd rather meet you once over espresso than rush you into a garment you don't yet want.</p>
+        <a class="book-btn" data-go="appt">Reserve a fitting <span class="arrow">→</span></a>
+      </div>
+      <div class="book-card">
+        <div class="label">This week · open hours</div>
+        <ul>
+          <li><span class="name">Wed, 24 Apr</span><span class="detail">11:00 · 14:00 · 16:30</span></li>
+          <li><span class="name">Thu, 25 Apr</span><span class="detail">10:30 · 13:00</span></li>
+          <li><span class="name">Fri, 26 Apr</span><span class="detail">By arrangement</span></li>
+          <li><span class="name">Sat, 27 Apr</span><span class="detail">09:30 · 12:00 · 15:00</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer data-screen-label="Home / Footer">
+    <div class="foot-inner">
+      <div class="foot-brand">
+        <div class="wordmark">KYRIS KUSTOMS<small>Est. MMXX · Bespoke</small></div>
+        <p>A small atelier making garments by hand for a small number of clients. Made once, made well, made to last longer than the occasion that asked for it.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Collections</h5>
+        <ul>
+          <li><a data-go="collection">White Dreams — Formal</a></li>
+          <li><a data-go="collection">Grey Spirit — Business</a></li>
+          <li><a data-go="collection">Off the Hour — Casual</a></li>
+          <li><a data-go="product">The Archive</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Studio</h5>
+        <ul>
+          <li><a data-go="about">The Man &amp; The Brand</a></li>
+          <li><a data-go="notable">Notable Clients</a></li>
+          <li><a data-go="appt">Book a fitting</a></li>
+          <li><a href="https://instagram.com/kyriskustoms" target="_blank">@kyriskustoms</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Contact</h5>
+        <ul>
+          <li>156 West Studio Lane</li>
+          <li>By appointment only</li>
+          <li>atelier@kyriskustoms.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>© 2020—2026 Kyris Kustoms · All rights reserved</div>
+      <div>Crafted, not launched</div>
+    </div>
+  </footer>
+
+</section>
+
+<!-- ══════════ COLLECTION ══════════ -->
+<section class="route" data-route="collection" data-screen-label="02 Collection">
+  <div class="coll-hero">
+    <div class="coll-hero-inner">
+      <div>
+        <div class="label">Collection · N° I · Formal Wear</div>
+        <h1>White<br/><em>Dreams.</em></h1>
+      </div>
+      <div class="lede">
+        Ivory, bone, and silver fox — a capsule for the weddings, the galas, and the rare nights a man decides to be photographed. Twelve pieces, each cut from an English mill cloth with a 90/10 wool-silk blend.
+      </div>
+    </div>
+    <div class="coll-hero-inner">
+      <div class="meta" style="grid-column:span 2">
+        <div><span>Pieces</span><strong>12 garments</strong></div>
+        <div><span>Cloth house</span><strong>Loro Piana / Holland &amp; Sherry</strong></div>
+        <div><span>Construction</span><strong>Full canvas, hand-padded</strong></div>
+        <div><span>Lead time</span><strong>14 weeks</strong></div>
+      </div>
+    </div>
+  </div>
+  <div class="coll-grid">
+    <div class="coll-grid-inner">
+      <div class="garment xl" data-go="product">
+        <div class="img"><div style="background-image:url('https://static.wixstatic.com/media/6a3a01_f82cc74e688d4155995c9a848060e141~mv2.jpg/v1/fill/w_1200,h_1600,al_c,q_90,enc_auto/g1.jpg')"></div></div>
+        <div class="num">N° 01 · THE PROPOSAL</div>
+        <div class="name">The Ivory Double-Breasted</div>
+        <div class="det">Peak lapel · Bone silk shawl · 90/10 WS</div>
+      </div>
+      <div class="garment lg" data-go="product">
+        <div class="img"><div style="background-image:url('https://static.wixstatic.com/media/6a3a01_6c5a518633b6426691b48a1db982febc~mv2.jpg/v1/fill/w_1000,h_1400,al_c,q_90,enc_auto/g2.jpg')"></div></div>
+        <div class="num">N° 02 · THE HOST</div>
+        <div class="name">The Three-Piece, in Bone</div>
+        <div class="det">Notch lapel · Mother-of-pearl · Silk lining</div>
+      </div>
+      <div class="garment md" data-go="product">
+        <div class="img"><div style="background-image:url('https://static.wixstatic.com/media/6a3a01_94f8eb0a7c9a442e8ecc8a971b0db298~mv2.jpg/v1/fill/w_900,h_1200,al_c,q_90,enc_auto/g3.jpg')"></div></div>
+        <div class="num">N° 03</div>
+        <div class="name">Dinner Jacket, Ivory</div>
+        <div class="det">Shawl collar · Silk facing</div>
+      </div>
+      <div class="garment md2" data-go="product">
+        <div class="img"><div style="background-image:url('https://static.wixstatic.com/media/6a3a01_14f2cdbd328a45f78a584a1959ef0e76~mv2.jpg/v1/fill/w_1100,h_1400,al_c,q_90,enc_auto/g4.jpg')"></div></div>
+        <div class="num">N° 04</div>
+        <div class="name">The Silver Fox Morning Coat</div>
+        <div class="det">Cut-away front · Striped cashmere</div>
+      </div>
+      <div class="garment md3" data-go="product">
+        <div class="img"><div style="background-image:url('https://static.wixstatic.com/media/6a3a01_62504004792847c590a00280283d24e5~mv2.jpg/v1/fill/w_700,h_1100,al_c,q_90,enc_auto/g5.jpg')"></div></div>
+        <div class="num">N° 05</div>
+        <div class="name">The Bone Waistcoat</div>
+        <div class="det">Six-button · Silk back</div>
+      </div>
+      <div class="garment xl2" data-go="product">
+        <div class="img"><div style="background-image:url('https://static.wixstatic.com/media/6a3a01_a07d611d18634d6192202bdcf3a77693~mv2.jpg/v1/fill/w_1300,h_1700,al_c,q_90,enc_auto/g6.jpg')"></div></div>
+        <div class="num">N° 06 · THE FATHER-IN-LAW</div>
+        <div class="name">The Ivory Tailcoat</div>
+        <div class="det">Silk-faced · Hand-sewn buttonholes · Made once</div>
+      </div>
+      <div class="garment md4" data-go="product">
+        <div class="img"><div style="background-image:url('https://static.wixstatic.com/media/6a3a01_d1c24d9920274bc690518fa6d48893b5~mv2.jpg/v1/fill/w_900,h_1200,al_c,q_90,enc_auto/g7.jpg')"></div></div>
+        <div class="num">N° 07</div>
+        <div class="name">The Charcoal Tuxedo</div>
+        <div class="det">Peak lapel · Grosgrain · Self-tie bow</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PRODUCT DETAIL ══════════ -->
+<section class="route" data-route="product" data-screen-label="03 Product detail">
+  <div class="pd">
+    <div class="pd-inner">
+      <div class="pd-imgs">
+        <div class="main" style="background-image:url('https://static.wixstatic.com/media/6a3a01_f82cc74e688d4155995c9a848060e141~mv2.jpg/v1/fill/w_1600,h_2000,al_c,q_90,enc_auto/m.jpg')"></div>
+        <div class="row">
+          <div style="background-image:url('https://static.wixstatic.com/media/6a3a01_6c5a518633b6426691b48a1db982febc~mv2.jpg/v1/fill/w_900,h_1100,al_c,q_90,enc_auto/a.jpg')"></div>
+          <div style="background-image:url('https://static.wixstatic.com/media/6a3a01_94f8eb0a7c9a442e8ecc8a971b0db298~mv2.jpg/v1/fill/w_900,h_1100,al_c,q_90,enc_auto/b.jpg')"></div>
+        </div>
+        <div class="main" style="aspect-ratio:4/3;background-image:url('https://static.wixstatic.com/media/6a3a01_f5b638a5126a4501a064153605d614c1~mv2.jpg/v1/fill/w_1600,h_1200,al_c,q_90,enc_auto/c.jpg')"></div>
+      </div>
+      <div class="pd-info">
+        <div class="label">White Dreams · N° 01</div>
+        <h1>The Ivory<br/><em>Double-Breasted.</em></h1>
+        <p class="tagline">Cut for the moment that becomes a memory.</p>
+        <div class="divider"></div>
+        <p class="body">A 6×2 double-breasted in 90/10 wool-silk, peak lapels faced in bone silk, soft shoulder with a 4mm rope. Full canvas, hand-padded over twenty-six hours, with a cupro silk lining in a shade of cream that only shows itself when the jacket opens.</p>
+        <dl class="spec">
+          <dt>Cloth</dt><dd>Loro Piana Zelander</dd>
+          <dt>Weight</dt><dd>250g · 4-season</dd>
+          <dt>Canvas</dt><dd>Full, hand-padded</dd>
+          <dt>Lining</dt><dd>Cupro silk, bone</dd>
+          <dt>Buttons</dt><dd>Mother-of-pearl</dd>
+          <dt>Lead time</dt><dd>14 weeks</dd>
+        </dl>
+        <div class="swatches">
+          <div class="h">Cloth — available from the bolt</div>
+          <div class="row">
+            <div class="sw on" style="background:#eee6d6" title="Ivory"></div>
+            <div class="sw" style="background:#d8cdb5" title="Bone"></div>
+            <div class="sw" style="background:#bfb5a0" title="Silver Fox"></div>
+            <div class="sw" style="background:#8a8172" title="Stone"></div>
+            <div class="sw" style="background:#2a2520" title="Charcoal"></div>
+          </div>
+        </div>
+        <div class="cta-row">
+          <a class="book-btn" data-go="appt">Reserve a fitting <span class="arrow">→</span></a>
+          <a class="ghost" data-go="collection">Back to collection</a>
+        </div>
+        <p style="margin-top:26px;font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;color:var(--mute);line-height:1.8">COMMISSIONED TO ORDER · NOT KEPT IN STOCK · MADE ONCE</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ NOTABLE CLIENTS ══════════ -->
+<section class="route" data-route="notable" data-screen-label="04 Notable Clients">
+  <div class="notable">
+    <div class="notable-inner">
+      <div class="label" style="color:var(--gold);margin-bottom:40px">Index · Worn by</div>
+      <h1>A quiet list of men who <em>refuse the obvious</em>.</h1>
+      <p class="intro">Across a decade the studio has cut garments for athletes, heads of state, and the occasional actor who did not want to be dressed by someone else. We do not publish the full list. What follows is what they let us say.</p>
+      <div class="notable-list">
+        <div class="notable-row"><div class="n">01</div><div class="name">M. <em>Adekunle</em></div><div class="occ">Chief Executive, West African Industry</div><div class="piece">Grey Spirit · 3-piece</div><div class="yr">MMXXII</div><div class="peek" style="background-image:url('https://static.wixstatic.com/media/6a3a01_624c2916eee246d5a7c28fd94693008f~mv2.jpg/v1/fill/w_600,h_800,al_c,q_85,enc_auto/a.jpg')"></div></div>
+        <div class="notable-row"><div class="n">02</div><div class="name">The <em>Ambassador</em></div><div class="occ">Permanent Mission to the UN</div><div class="piece">Morning coat</div><div class="yr">MMXXI</div><div class="peek" style="background-image:url('https://static.wixstatic.com/media/6a3a01_a07d611d18634d6192202bdcf3a77693~mv2.jpg/v1/fill/w_600,h_800,al_c,q_85,enc_auto/b.jpg')"></div></div>
+        <div class="notable-row"><div class="n">03</div><div class="name">R. <em>Osei</em></div><div class="occ">Film, stage, and nine award nominations</div><div class="piece">White Dreams · 01</div><div class="yr">MMXXIII</div><div class="peek" style="background-image:url('https://static.wixstatic.com/media/6a3a01_f82cc74e688d4155995c9a848060e141~mv2.jpg/v1/fill/w_600,h_800,al_c,q_85,enc_auto/c.jpg')"></div></div>
+        <div class="notable-row"><div class="n">04</div><div class="name">Captain, <em>1st XI</em></div><div class="occ">International sport, retired undefeated</div><div class="piece">Casual · unstructured</div><div class="yr">MMXX</div><div class="peek" style="background-image:url('https://static.wixstatic.com/media/6a3a01_a00ffbf262b942b5bc3e811d5cfd403b~mv2.jpg/v1/fill/w_600,h_800,al_c,q_85,enc_auto/d.jpg')"></div></div>
+        <div class="notable-row"><div class="n">05</div><div class="name">Dr. K. <em>Mensah</em></div><div class="occ">Surgeon, speaker, scholar</div><div class="piece">Grey Spirit · DB</div><div class="yr">MMXXII</div><div class="peek" style="background-image:url('https://static.wixstatic.com/media/6a3a01_d1c24d9920274bc690518fa6d48893b5~mv2.jpg/v1/fill/w_600,h_800,al_c,q_85,enc_auto/e.jpg')"></div></div>
+        <div class="notable-row"><div class="n">06</div><div class="name">The <em>Pianist</em></div><div class="occ">Carnegie, Wigmore, and an audience of one</div><div class="piece">Midnight tuxedo</div><div class="yr">MMXXIV</div><div class="peek" style="background-image:url('https://static.wixstatic.com/media/6a3a01_94f8eb0a7c9a442e8ecc8a971b0db298~mv2.jpg/v1/fill/w_600,h_800,al_c,q_85,enc_auto/f.jpg')"></div></div>
+        <div class="notable-row"><div class="n">07</div><div class="name">J. <em>Williams</em></div><div class="occ">Founder, three companies, one quiet empire</div><div class="piece">Off the Hour · 03</div><div class="yr">MMXXIII</div><div class="peek" style="background-image:url('https://static.wixstatic.com/media/6a3a01_62504004792847c590a00280283d24e5~mv2.jpg/v1/fill/w_600,h_800,al_c,q_85,enc_auto/g.jpg')"></div></div>
+        <div class="notable-row"><div class="n">08</div><div class="name">O. <em>Bankole</em></div><div class="occ">Architect — the one whose buildings you know</div><div class="piece">Grey Spirit · travel suit</div><div class="yr">MMXXV</div><div class="peek" style="background-image:url('https://static.wixstatic.com/media/6a3a01_14f2cdbd328a45f78a584a1959ef0e76~mv2.jpg/v1/fill/w_600,h_800,al_c,q_85,enc_auto/h.jpg')"></div></div>
+        <div class="notable-row"><div class="n">09</div><div class="name">The <em>Diplomat's Son</em></div><div class="occ">First wedding suit · returned for the second</div><div class="piece">White Dreams · Tailcoat</div><div class="yr">MMXXIV</div><div class="peek" style="background-image:url('https://static.wixstatic.com/media/6a3a01_f5b638a5126a4501a064153605d614c1~mv2.jpg/v1/fill/w_600,h_800,al_c,q_85,enc_auto/i.jpg')"></div></div>
+      </div>
+      <p style="margin-top:80px;font-family:var(--serif);font-style:italic;font-size:22px;line-height:1.5;opacity:.75;max-width:680px">Thirty-four further names are kept out of print at the client's request. Some of them you would recognise. That is, of course, the point.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ABOUT ══════════ -->
+<section class="route" data-route="about" data-screen-label="05 About">
+  <div class="about">
+    <div class="about-hero">
+      <div class="about-hero-inner">
+        <div class="img" style="background-image:url('https://static.wixstatic.com/media/6a3a01_a00ffbf262b942b5bc3e811d5cfd403b~mv2.jpg/v1/fill/w_1200,h_1600,al_c,q_90,enc_auto/k.jpg')"></div>
+        <div class="text">
+          <div class="label">The Man &amp; The Brand</div>
+          <h1>A <em>tailor</em>,<br/>and the men<br/>he dresses.</h1>
+          <p class="quote">"I learned to make a suit before I learned to buy one. That order mattered. It still does."</p>
+          <div class="sig">— Kyris<small>Founder, Cutter, Last Word</small></div>
+        </div>
+      </div>
+    </div>
+    <div class="about-story">
+      <div class="story-inner">
+        <p class="drop">Kyris apprenticed on Savile Row for four years before returning home to open a room of his own. What he brought back was not a brand, but a method — the quiet insistence that a garment should be argued over in French chalk long before it is photographed.</p>
+        <p>The studio was opened in 2020 with three commissions and a single cutting table. It has, by design, grown slowly. Fewer than sixty bespoke garments are cut in any calendar year. None are made twice.</p>
+        <p style="font-style:italic;color:var(--accent)">The rule of the house is simple: if it cannot be done by hand in this room, it is not done at all.</p>
+      </div>
+      <div class="story-stats">
+        <div class="stat"><div class="n"><em>54</em></div><div class="l">garments per year, max</div></div>
+        <div class="stat"><div class="n"><em>14</em></div><div class="l">weeks, delivery</div></div>
+        <div class="stat"><div class="n"><em>32</em></div><div class="l">hand measurements</div></div>
+        <div class="stat"><div class="n"><em>01</em></div><div class="l">cutter, one room</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ APPOINTMENT ══════════ -->
+<section class="route" data-route="appt" data-screen-label="06 Appointment">
+  <div class="appt">
+    <div class="appt-inner">
+      <div class="appt-head">
+        <div>
+          <div class="label">Bookings · Spring '26</div>
+          <h1>Reserve a <em>fitting.</em></h1>
+        </div>
+        <p>First consultations run ninety minutes and are without obligation. Bring a jacket you love, or one you don't — both are useful. Espresso is on the house.</p>
+      </div>
+      <div class="appt-grid">
+        <div class="appt-form" id="apptForm">
+          <div class="step-indicator">
+            <span class="on">01 · Purpose</span><span>02 · Date</span><span>03 · Time</span><span>04 · Details</span>
+          </div>
+          <fieldset>
+            <legend>What brings you in?</legend>
+            <div class="opts" id="purposeOpts">
+              <div class="opt on" data-v="First consultation"><div class="ot">First consultation</div><div class="od">An introduction, no commitment</div></div>
+              <div class="opt" data-v="Bespoke commission"><div class="ot">Bespoke commission</div><div class="od">Begin a new garment</div></div>
+              <div class="opt" data-v="Returning fitting"><div class="ot">Returning fitting</div><div class="od">Baste, forward, or final</div></div>
+              <div class="opt" data-v="Wardrobe review"><div class="ot">Wardrobe review</div><div class="od">Alterations &amp; direction</div></div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Select a date · April 2026</legend>
+            <div class="cal" id="cal"></div>
+          </fieldset>
+          <fieldset>
+            <legend>Preferred time</legend>
+            <div class="times" id="times">
+              <div class="time" data-v="09:30">09:30</div>
+              <div class="time" data-v="11:00">11:00</div>
+              <div class="time on" data-v="13:00">13:00</div>
+              <div class="time" data-v="14:30">14:30</div>
+              <div class="time" data-v="16:00">16:00</div>
+              <div class="time" data-v="17:30">17:30</div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Your details</legend>
+            <div class="fields">
+              <input type="text" id="nmF" placeholder="First name">
+              <input type="text" id="nmL" placeholder="Surname">
+              <input type="email" id="nmE" placeholder="Email address" style="grid-column:span 2">
+              <input type="text" id="nmN" placeholder="A note, if you'd like" style="grid-column:span 2">
+            </div>
+          </fieldset>
+          <button class="book-btn submit" id="submitAppt">Confirm appointment <span class="arrow">→</span></button>
+        </div>
+        <aside class="appt-summary">
+          <div class="label" style="color:var(--gold);margin-bottom:10px">Your visit</div>
+          <h3 id="sumTitle">First consultation</h3>
+          <div class="sub">— with Kyris, in studio</div>
+          <div class="summary-rows">
+            <div class="summary-row"><span class="l">Date</span><span class="v" id="sumDate">Wed, 29 April 2026</span></div>
+            <div class="summary-row"><span class="l">Time</span><span class="v" id="sumTime">13:00 · 90 min</span></div>
+            <div class="summary-row"><span class="l">Purpose</span><span class="v" id="sumPurpose">First consultation</span></div>
+            <div class="summary-row"><span class="l">Studio</span><span class="v">156 W. Studio Lane</span></div>
+            <div class="summary-row"><span class="l">Booking</span><span class="v empty" id="sumName">— awaiting name</span></div>
+          </div>
+          <div class="summary-note">A confirmation will be sent by hand-addressed email within the same day. Cancellations accepted up to 24 hours prior, with apologies to the cloth.</div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- Tweaks panel -->
+<div class="tweaks-panel" id="tweaks">
+  <h4>Tweaks</h4>
+  <div class="sub">Live controls</div>
+  <div class="tweak-row">
+    <label>Accent</label>
+    <div class="swatch-row" id="accentSw">
+      <div class="sw on" data-v="#6b1f1a" style="background:#6b1f1a"></div>
+      <div class="sw" data-v="#a3844c" style="background:#a3844c"></div>
+      <div class="sw" data-v="#1f3a2e" style="background:#1f3a2e"></div>
+      <div class="sw" data-v="#0e0c0a" style="background:#0e0c0a"></div>
+    </div>
+  </div>
+  <div class="tweak-row">
+    <label>Paper</label>
+    <div class="swatch-row" id="boneSw">
+      <div class="sw on" data-v="#f4efe6" style="background:#f4efe6"></div>
+      <div class="sw" data-v="#efeae0" style="background:#efeae0"></div>
+      <div class="sw" data-v="#faf7f1" style="background:#faf7f1"></div>
+      <div class="sw" data-v="#e4ddcb" style="background:#e4ddcb"></div>
+    </div>
+  </div>
+  <div class="tweak-row">
+    <label>Display serif</label>
+    <select id="serifSel">
+      <option value="'Cormorant Garamond', serif">Cormorant Garamond</option>
+      <option value="'Playfair Display', serif">Playfair Display</option>
+      <option value="Georgia, serif">Georgia</option>
+    </select>
+  </div>
+</div>
+
+<script>
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accent": "#6b1f1a",
+  "bone": "#f4efe6",
+  "serif": "'Cormorant Garamond', serif"
+}/*EDITMODE-END*/;
+
+/* ——— Routing ——— */
+const routes = document.querySelectorAll('[data-route]');
+const crumbPage = document.getElementById('crumb-page');
+const labels = {home:'Index',collection:'Collection — White Dreams',product:'Archive — N° 01',notable:'Notable Clients',about:'The Man & The Brand',appt:'Book a fitting'};
+
+function go(name){
+  routes.forEach(r=>{r.classList.toggle('is-on', r.dataset.route===name)});
+  document.querySelectorAll('[data-go]').forEach(a=>{
+    a.classList.toggle('is-active', a.dataset.go===name);
+  });
+  crumbPage.textContent = labels[name]||name;
+  // Persist
+  try{localStorage.setItem('kk-route',name)}catch(e){}
+  window.scrollTo({top:0,behavior:'instant'});
+  // Restart scroll listeners bound to home showcase
+  if(name==='home') setTimeout(bindShowcase, 50);
+}
+document.addEventListener('click', e=>{
+  const el = e.target.closest('[data-go]');
+  if(el){e.preventDefault(); go(el.dataset.go);}
+});
+// Restore
+try{const r = localStorage.getItem('kk-route'); if(r && labels[r]) go(r);}catch(e){}
+
+/* ——— Scroll-pinned showcase ——— */
+function bindShowcase(){
+  const showcase = document.getElementById('showcase');
+  if(!showcase) return;
+  const imgs = document.querySelectorAll('#sc-imgs .slide');
+  const txts = document.querySelectorAll('#sc-txt .slide');
+  const dots = document.querySelectorAll('#sc-nav .showcase-dot');
+  const prog = document.getElementById('sc-prog');
+  let current = -1;
+  function update(){
+    const rect = showcase.getBoundingClientRect();
+    const start = rect.top;
+    const span = showcase.offsetHeight - window.innerHeight;
+    const progress = Math.max(0, Math.min(1, -start/span));
+    const idx = Math.min(2, Math.floor(progress*3));
+    if(idx!==current){
+      current = idx;
+      imgs.forEach((s,i)=>s.classList.toggle('on', i===idx));
+      txts.forEach((s,i)=>s.classList.toggle('on', i===idx));
+      dots.forEach((s,i)=>s.classList.toggle('on', i===idx));
+      prog.textContent = String(idx+1).padStart(2,'0') + ' / 03';
+    }
+  }
+  window.removeEventListener('scroll', window._scHandler||(()=>{}));
+  window._scHandler = update;
+  window.addEventListener('scroll', update, {passive:true});
+  update();
+}
+bindShowcase();
+
+/* Fade-in on scroll for strip tiles */
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(en=>{if(en.isIntersecting){en.target.style.opacity=1;en.target.style.transform='translateY(0)';}});
+},{threshold:.15});
+document.querySelectorAll('.tile, .garment, .step, .client, .notable-row').forEach(el=>{
+  el.style.opacity = 0;
+  el.style.transform='translateY(40px)';
+  el.style.transition='opacity .9s ease, transform .9s ease';
+  io.observe(el);
+});
+
+/* Make home client tiles use bg if provided */
+document.querySelectorAll('.client').forEach((c,i)=>{
+  const bgs = [
+    'https://static.wixstatic.com/media/6a3a01_624c2916eee246d5a7c28fd94693008f~mv2.jpg/v1/fill/w_900,h_1100,al_c,q_90,enc_auto/1.jpg',
+    'https://static.wixstatic.com/media/6a3a01_a07d611d18634d6192202bdcf3a77693~mv2.jpg/v1/fill/w_900,h_1100,al_c,q_90,enc_auto/2.jpg',
+    'https://static.wixstatic.com/media/6a3a01_94f8eb0a7c9a442e8ecc8a971b0db298~mv2.jpg/v1/fill/w_900,h_1100,al_c,q_90,enc_auto/3.jpg',
+    'https://static.wixstatic.com/media/6a3a01_a00ffbf262b942b5bc3e811d5cfd403b~mv2.jpg/v1/fill/w_900,h_1100,al_c,q_90,enc_auto/4.jpg'
+  ];
+  c.style.setProperty('--bg', `url(${bgs[i]})`);
+  c.style.setProperty('position','relative');
+  const before = document.createElement('style');
+});
+document.querySelectorAll('.client').forEach((c,i)=>{
+  const bgs = [
+    'https://static.wixstatic.com/media/6a3a01_624c2916eee246d5a7c28fd94693008f~mv2.jpg/v1/fill/w_900,h_1100,al_c,q_90,enc_auto/1.jpg',
+    'https://static.wixstatic.com/media/6a3a01_a07d611d18634d6192202bdcf3a77693~mv2.jpg/v1/fill/w_900,h_1100,al_c,q_90,enc_auto/2.jpg',
+    'https://static.wixstatic.com/media/6a3a01_94f8eb0a7c9a442e8ecc8a971b0db298~mv2.jpg/v1/fill/w_900,h_1100,al_c,q_90,enc_auto/3.jpg',
+    'https://static.wixstatic.com/media/6a3a01_a00ffbf262b942b5bc3e811d5cfd403b~mv2.jpg/v1/fill/w_900,h_1100,al_c,q_90,enc_auto/4.jpg'
+  ];
+  c.style.setProperty('background-image', bgs[i]?`linear-gradient(rgba(14,12,10,.7),rgba(14,12,10,.9)), url(${bgs[i]})`:'');
+  c.style.setProperty('background-size','cover');
+  c.style.setProperty('background-position','center');
+});
+
+/* ——— Product swatches ——— */
+document.querySelectorAll('.swatches .sw').forEach(sw=>{
+  sw.addEventListener('click', ()=>{
+    sw.parentElement.querySelectorAll('.sw').forEach(s=>s.classList.remove('on'));
+    sw.classList.add('on');
+  });
+});
+
+/* ——— Appointment form ——— */
+const state = {purpose:'First consultation', date:new Date(2026,3,29), time:'13:00', name:''};
+const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const dows = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+
+function buildCal(){
+  const cal = document.getElementById('cal');
+  if(!cal) return;
+  cal.innerHTML = '';
+  dows.forEach(d=>{const n=document.createElement('div');n.className='dow';n.textContent=d;cal.appendChild(n);});
+  // April 2026: 1st = Wednesday (April 1, 2026 is a Wednesday)
+  const startDow = 2; // Wed index in Mon-first
+  for(let i=0;i<startDow;i++){const n=document.createElement('div');n.className='d off';cal.appendChild(n);}
+  for(let d=1; d<=30; d++){
+    const n=document.createElement('div');
+    n.className='d';
+    n.textContent=d;
+    // Studio open Wed-Sat (dow index 2-5 in Mon-first)
+    const dt = new Date(2026,3,d);
+    const dow = (dt.getDay()+6)%7;
+    if(dow<2||dow>5){ n.classList.add('off'); }
+    if(d===29) n.classList.add('on');
+    n.addEventListener('click',()=>{
+      if(n.classList.contains('off')) return;
+      cal.querySelectorAll('.d').forEach(x=>x.classList.remove('on'));
+      n.classList.add('on');
+      state.date = new Date(2026,3,d);
+      updateSummary();
+    });
+    cal.appendChild(n);
+  }
+}
+buildCal();
+document.querySelectorAll('#purposeOpts .opt').forEach(o=>{
+  o.addEventListener('click',()=>{
+    document.querySelectorAll('#purposeOpts .opt').forEach(x=>x.classList.remove('on'));
+    o.classList.add('on');
+    state.purpose = o.dataset.v;
+    updateSummary();
+  });
+});
+document.querySelectorAll('#times .time').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('#times .time').forEach(x=>x.classList.remove('on'));
+    t.classList.add('on');
+    state.time = t.dataset.v;
+    updateSummary();
+  });
+});
+['nmF','nmL','nmE','nmN'].forEach(id=>{
+  const el = document.getElementById(id);
+  if(el) el.addEventListener('input', ()=>{
+    const f = document.getElementById('nmF').value.trim();
+    const l = document.getElementById('nmL').value.trim();
+    state.name = (f+' '+l).trim();
+    updateSummary();
+  });
+});
+function updateSummary(){
+  const dt = state.date;
+  const dn = dt.toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'long',year:'numeric'});
+  document.getElementById('sumDate').textContent = dn;
+  document.getElementById('sumTime').textContent = state.time + ' · 90 min';
+  document.getElementById('sumPurpose').textContent = state.purpose;
+  document.getElementById('sumTitle').textContent = state.purpose;
+  const nm = document.getElementById('sumName');
+  if(state.name){ nm.textContent = state.name; nm.classList.remove('empty'); }
+  else { nm.textContent = '— awaiting name'; nm.classList.add('empty'); }
+}
+document.getElementById('submitAppt')?.addEventListener('click', e=>{
+  e.preventDefault();
+  const btn = e.currentTarget;
+  btn.innerHTML = '✓ Reserved — a confirmation will follow';
+  btn.style.background = 'var(--accent)';
+});
+
+/* ——— Tweaks ——— */
+window.addEventListener('message', e=>{
+  const msg = e.data||{};
+  if(msg.type==='__activate_edit_mode') document.getElementById('tweaks').classList.add('on');
+  if(msg.type==='__deactivate_edit_mode') document.getElementById('tweaks').classList.remove('on');
+});
+window.parent.postMessage({type:'__edit_mode_available'}, '*');
+
+function applyTweaks(t){
+  document.documentElement.style.setProperty('--accent', t.accent);
+  document.documentElement.style.setProperty('--bone', t.bone);
+  document.documentElement.style.setProperty('--serif', t.serif);
+}
+applyTweaks(TWEAK_DEFAULTS);
+
+document.getElementById('accentSw').addEventListener('click', e=>{
+  const sw = e.target.closest('.sw'); if(!sw) return;
+  document.querySelectorAll('#accentSw .sw').forEach(s=>s.classList.remove('on'));
+  sw.classList.add('on');
+  TWEAK_DEFAULTS.accent = sw.dataset.v;
+  applyTweaks(TWEAK_DEFAULTS);
+  window.parent.postMessage({type:'__edit_mode_set_keys', edits:{accent:sw.dataset.v}}, '*');
+});
+document.getElementById('boneSw').addEventListener('click', e=>{
+  const sw = e.target.closest('.sw'); if(!sw) return;
+  document.querySelectorAll('#boneSw .sw').forEach(s=>s.classList.remove('on'));
+  sw.classList.add('on');
+  TWEAK_DEFAULTS.bone = sw.dataset.v;
+  applyTweaks(TWEAK_DEFAULTS);
+  window.parent.postMessage({type:'__edit_mode_set_keys', edits:{bone:sw.dataset.v}}, '*');
+});
+document.getElementById('serifSel').addEventListener('change', e=>{
+  TWEAK_DEFAULTS.serif = e.target.value;
+  applyTweaks(TWEAK_DEFAULTS);
+  window.parent.postMessage({type:'__edit_mode_set_keys', edits:{serif:e.target.value}}, '*');
+});
+</script>
+</body>
+</html>
