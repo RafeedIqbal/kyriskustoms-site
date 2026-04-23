@@ -1,0 +1,214 @@
+.page {
+  min-height: 100vh;
+  padding: 8.5rem 2rem 7rem;
+  background: var(--bone);
+}
+
+.inner {
+  max-width: 90rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(20rem, 1fr);
+  gap: 4rem;
+}
+
+.images {
+  display: grid;
+  gap: 1rem;
+}
+
+.mainImage,
+.detailImage,
+.wideImage {
+  position: relative;
+  overflow: hidden;
+  background: var(--ink);
+}
+
+.mainImage {
+  aspect-ratio: 4 / 5;
+}
+
+.detailRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.detailImage {
+  aspect-ratio: 4 / 5;
+}
+
+.wideImage {
+  aspect-ratio: 4 / 3;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.infoColumn {
+  min-width: 0;
+}
+
+.info {
+  position: sticky;
+  top: 8rem;
+}
+
+.label {
+  margin: 0 0 1rem;
+  font-size: 0.64rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 5vw, 4.75rem);
+  font-weight: 300;
+  line-height: 0.94;
+  letter-spacing: -0.02em;
+}
+
+.title em {
+  font-style: italic;
+}
+
+.tagline {
+  margin: 1rem 0 0;
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--mute);
+}
+
+.divider {
+  height: 1px;
+  margin: 2rem 0;
+  background: var(--rule);
+}
+
+.description {
+  margin: 0;
+  line-height: 1.85;
+  color: #3a342c;
+}
+
+.specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem 1.5rem;
+  margin: 2rem 0 0;
+}
+
+.specRow {
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--rule);
+}
+
+.specRow dt {
+  margin-bottom: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.specRow dd {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+}
+
+.swatches {
+  margin-top: 2rem;
+}
+
+.swatches p {
+  margin: 0 0 0.8rem;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.swatchRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.swatchWrap {
+  display: grid;
+  justify-items: center;
+  gap: 0.45rem;
+}
+
+.swatch {
+  display: block;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 999px;
+  border: 1px solid var(--rule);
+}
+
+.swatchActive {
+  outline: 1px solid var(--ink);
+  outline-offset: 4px;
+}
+
+.swatchWrap small {
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2.25rem;
+}
+
+.primaryAction,
+.secondaryAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 1rem 1.3rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.primaryAction {
+  background: var(--ink);
+  color: var(--bone);
+}
+
+.secondaryAction {
+  border: 1px solid var(--ink);
+}
+
+@media (max-width: 900px) {
+  .page {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .inner,
+  .detailRow,
+  .specs {
+    grid-template-columns: 1fr;
+  }
+
+  .info {
+    position: static;
+  }
+}

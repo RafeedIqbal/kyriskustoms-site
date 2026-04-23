@@ -1,0 +1,191 @@
+.page {
+  background: var(--bone);
+}
+
+.hero {
+  padding: 8.5rem 2rem 5rem;
+}
+
+.heroInner {
+  max-width: 90rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(20rem, 1fr);
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.imageWrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  background: var(--ink);
+}
+
+.image {
+  object-fit: cover;
+}
+
+.label {
+  margin: 0 0 1.4rem;
+  font-size: 0.64rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(3.25rem, 6vw, 5.5rem);
+  font-weight: 300;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+}
+
+.title em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.quote {
+  max-width: 32rem;
+  margin: 2.2rem 0 0;
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-style: italic;
+  line-height: 1.45;
+  color: #3a342c;
+}
+
+.signature {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin: 2rem 0 0;
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+}
+
+.signature small {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.storySection {
+  padding: 6.5rem 2rem;
+  background: var(--paper);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+.storyInner {
+  max-width: 56rem;
+  margin: 0 auto;
+}
+
+.paragraph p {
+  margin: 0 0 1.75rem;
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 300;
+  line-height: 1.62;
+  color: #2a251e;
+}
+
+.dropcap p::first-letter {
+  float: left;
+  padding-right: 0.7rem;
+  font-size: 5.2rem;
+  line-height: 0.9;
+  color: var(--accent);
+  font-style: italic;
+}
+
+.stats {
+  max-width: 75rem;
+  margin: 4rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--rule);
+}
+
+.stat strong {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 4rem;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.stat span {
+  display: block;
+  margin-top: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.ctaSection {
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 6rem 2rem 8rem;
+}
+
+.ctaLabel {
+  margin: 0 0 1rem;
+  font-size: 0.64rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.ctaTitle {
+  max-width: 42rem;
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(2.75rem, 5vw, 4.5rem);
+  font-weight: 300;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+}
+
+.ctaBody {
+  max-width: 30rem;
+  margin: 1.5rem 0 2rem;
+  line-height: 1.8;
+  color: #3a342c;
+}
+
+.action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 1rem 1.4rem;
+  background: var(--ink);
+  color: var(--bone);
+  font-size: 0.62rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+  .hero,
+  .storySection,
+  .ctaSection {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .heroInner,
+  .stats {
+    grid-template-columns: 1fr;
+  }
+}

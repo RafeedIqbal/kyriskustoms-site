@@ -1,0 +1,364 @@
+.page {
+  min-height: 100vh;
+  padding: 8.5rem 2rem 7rem;
+  background: var(--bone);
+}
+
+.inner {
+  max-width: 75rem;
+  margin: 0 auto;
+}
+
+.head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 28rem);
+  gap: 3rem;
+  align-items: end;
+  margin-bottom: 4rem;
+}
+
+.label {
+  margin: 0 0 1.2rem;
+  font-size: 0.64rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(3.25rem, 6vw, 5.75rem);
+  font-weight: 300;
+  line-height: 0.96;
+  letter-spacing: -0.02em;
+}
+
+.title em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.description {
+  margin: 0;
+  line-height: 1.82;
+  color: #3a342c;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(20rem, 24rem);
+  gap: 3rem;
+  align-items: start;
+}
+
+.form {
+  padding: 2.75rem;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+}
+
+.steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem 1rem;
+  margin-bottom: 2rem;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.stepActive {
+  color: var(--accent);
+}
+
+.fieldset {
+  margin: 0 0 1.75rem;
+  padding: 0;
+  border: 0;
+}
+
+.fieldset legend {
+  margin-bottom: 0.85rem;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.optionGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.option {
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--rule);
+  background: var(--bone);
+  text-align: left;
+  transition:
+    border-color 220ms ease,
+    background 220ms ease,
+    color 220ms ease;
+}
+
+.option span {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+}
+
+.option small {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.68rem;
+  color: inherit;
+  opacity: 0.72;
+}
+
+.option:hover,
+.optionActive {
+  border-color: var(--ink);
+}
+
+.optionActive {
+  background: var(--ink);
+  color: var(--bone);
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.35rem;
+}
+
+.weekday,
+.blankDay,
+.dayButton,
+.dayDisabled {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.weekday {
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.dayButton,
+.dayDisabled {
+  border: 1px solid transparent;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+}
+
+.dayButton:hover {
+  border-color: var(--ink);
+}
+
+.dayButtonActive {
+  background: var(--ink);
+  color: var(--bone);
+}
+
+.dayDisabled {
+  color: rgba(133, 124, 111, 0.3);
+}
+
+.timeGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.timeButton {
+  padding: 0.8rem 0.25rem;
+  border: 1px solid var(--rule);
+  background: var(--bone);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.timeButtonActive {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bone);
+}
+
+.fieldGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.2rem;
+}
+
+.fieldGrid input,
+.fieldGrid textarea {
+  width: 100%;
+  padding: 0.9rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--rule);
+  background: transparent;
+  outline: 0;
+}
+
+.fieldGrid input:focus,
+.fieldGrid textarea:focus {
+  border-bottom-color: var(--ink);
+}
+
+.fullWidth {
+  grid-column: span 2;
+}
+
+.noteField {
+  min-height: 5.5rem;
+  resize: vertical;
+}
+
+.submit {
+  display: inline-flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 1.4rem;
+  background: var(--ink);
+  color: var(--bone);
+  font-size: 0.62rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.confirmation {
+  margin: 1rem 0 0;
+  line-height: 1.7;
+  color: var(--accent);
+}
+
+.summary {
+  position: sticky;
+  top: 8rem;
+  padding: 2.4rem;
+  background: var(--ink);
+  color: var(--bone);
+}
+
+.summaryLabel {
+  margin: 0 0 0.5rem;
+  font-size: 0.64rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.summary h2 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+.summarySub {
+  margin: 0.4rem 0 1.8rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: rgba(244, 239, 230, 0.62);
+}
+
+.summaryRows {
+  display: grid;
+  gap: 1rem;
+}
+
+.summaryRow {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.25rem;
+  align-items: baseline;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px dashed rgba(244, 239, 230, 0.14);
+}
+
+.summaryRow span {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(244, 239, 230, 0.48);
+}
+
+.summaryRow strong {
+  justify-self: end;
+  font-family: var(--font-serif);
+  font-size: 1.06rem;
+  font-weight: 400;
+  text-align: right;
+}
+
+.empty {
+  color: rgba(244, 239, 230, 0.38);
+  font-style: italic;
+}
+
+.summaryNote {
+  margin: 1.8rem 0 0;
+  padding: 1rem;
+  background: rgba(26, 23, 20, 0.9);
+  line-height: 1.7;
+  color: rgba(244, 239, 230, 0.72);
+}
+
+@media (max-width: 900px) {
+  .page {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .head,
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form,
+  .summary {
+    padding: 1.6rem;
+  }
+
+  .summary {
+    position: static;
+  }
+}
+
+@media (max-width: 640px) {
+  .optionGrid,
+  .fieldGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .timeGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .fullWidth {
+    grid-column: span 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .option,
+  .dayButton,
+  .submit {
+    transition: none;
+  }
+}

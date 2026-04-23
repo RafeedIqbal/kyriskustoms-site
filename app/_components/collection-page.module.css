@@ -1,0 +1,270 @@
+.page {
+  background: var(--bone);
+}
+
+.hero {
+  padding: 9rem 2rem 4.5rem;
+}
+
+.heroInner {
+  max-width: 90rem;
+  margin: 0 auto;
+}
+
+.switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-bottom: 2.5rem;
+}
+
+.switcherLink {
+  padding: 0.8rem 1.1rem;
+  border: 1px solid var(--rule);
+  background: rgba(250, 247, 241, 0.7);
+  font-size: 0.62rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--mute);
+  transition:
+    color 220ms ease,
+    border-color 220ms ease,
+    background 220ms ease;
+}
+
+.switcherLink:hover,
+.switcherLinkActive {
+  border-color: var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.headline {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 28rem);
+  gap: 4rem;
+  align-items: end;
+}
+
+.label {
+  margin: 0 0 1.2rem;
+  font-size: 0.66rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(4.5rem, 10vw, 10.75rem);
+  font-weight: 300;
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+}
+
+.title em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.description {
+  max-width: 28rem;
+  margin: 0;
+  justify-self: end;
+  line-height: 1.85;
+  color: #3a342c;
+}
+
+.metaGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--rule);
+}
+
+.metaCard span {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.metaCard strong {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.primaryAction,
+.secondaryAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 1rem 1.4rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.primaryAction {
+  background: var(--ink);
+  color: var(--bone);
+}
+
+.secondaryAction {
+  border: 1px solid var(--ink);
+}
+
+.gallery {
+  padding: 3rem 2rem 9rem;
+}
+
+.galleryInner {
+  max-width: 90rem;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 2rem;
+  row-gap: 5rem;
+}
+
+.card {
+  min-width: 0;
+}
+
+.cardLink {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cardImageWrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  background: var(--ink);
+}
+
+.cardImage {
+  object-fit: cover;
+  transition: transform 1200ms ease;
+}
+
+.card:hover .cardImage {
+  transform: scale(1.05);
+}
+
+.number {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.name {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 1.65rem;
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.detail {
+  margin: 0;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.xl {
+  grid-column: span 7;
+}
+
+.lg {
+  grid-column: span 5;
+  margin-top: 5.5rem;
+}
+
+.md {
+  grid-column: span 4;
+}
+
+.md2 {
+  grid-column: span 5;
+  margin-top: 4rem;
+}
+
+.md3 {
+  grid-column: span 3;
+}
+
+.xl2 {
+  grid-column: span 8;
+  margin-top: 3rem;
+}
+
+.md4 {
+  grid-column: span 4;
+}
+
+.galleryFoot {
+  max-width: 32rem;
+  margin-top: 3rem;
+  margin-left: auto;
+  line-height: 1.8;
+  color: #4a4339;
+}
+
+@media (max-width: 900px) {
+  .hero,
+  .gallery {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .headline,
+  .metaGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .description {
+    justify-self: start;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    row-gap: 2.5rem;
+  }
+
+  .card {
+    grid-column: span 1;
+    margin-top: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .switcherLink,
+  .cardImage {
+    transition: none;
+  }
+}
