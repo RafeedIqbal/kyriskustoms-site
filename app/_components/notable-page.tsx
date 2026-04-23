@@ -35,14 +35,17 @@ export function NotablePage() {
           {NOTABLE_CLIENTS.map((client, index) => (
             <Reveal
               key={client.number}
-              className={styles.row}
+              className={[
+                styles.row,
+                client.year ? "" : styles.rowNoYear,
+              ].join(" ")}
               delayMs={index * 40}
             >
               <div className={styles.number}>{client.number}</div>
               <div className={styles.name}>{client.name}</div>
               <div className={styles.role}>{client.role}</div>
               <div className={styles.piece}>{client.piece}</div>
-              <div className={styles.year}>{client.year}</div>
+              {client.year ? <div className={styles.year}>{client.year}</div> : null}
               <div className={styles.peek}>
                 <Image
                   src={client.image}

@@ -86,7 +86,7 @@ export type NotableClient = {
   name: string;
   role: string;
   piece: string;
-  year: string;
+  year?: string;
   image: string;
 };
 
@@ -375,26 +375,26 @@ export const HOME_CONTENT = {
   clientsHeadingPlain: "Worn by the",
   clientsHeadingEmphasis: "uncompromising",
   clientsBody:
-    "A quiet list of clients who came for one commission and stayed for a longer relationship with tailoring. We keep most of the names off the record; the garments do the speaking.",
+    "A short public read from the studio’s wider client record, spanning public office, sport, law, ministry, and entertainment.",
   clientsPreview: [
     {
-      name: "The Ambassador",
-      role: "Diplomatic corps",
+      name: "Mike Espy",
+      role: "Former Secretary of Agriculture",
       image: media.client1,
     },
     {
-      name: "The Founder",
-      role: "Private office",
+      name: "Mahmoud Abdul Rauf",
+      role: "NBA legend, global activist",
       image: media.client2,
     },
     {
-      name: "The Captain",
-      role: "International sport",
+      name: "Jabari O. Edwards",
+      role: "Founder/Chairman, J5 GBL",
       image: media.client3,
     },
     {
-      name: "The Architect",
-      role: "Practice principal",
+      name: "Terrell Buckley",
+      role: "Super Bowl champion",
       image: media.client4,
     },
   ] satisfies ClientPreview[],
@@ -653,80 +653,115 @@ export const ARCHIVE_PRODUCT: ProductData = {
     "Archive detail for the Ivory Double-Breasted from the White Dreams formal collection by Kyris Kustoms.",
 };
 
-export const NOTABLE_CLIENTS = [
+export const NOTABLE_CLIENTS: NotableClient[] = [
   {
     number: "01",
-    name: "The Ambassador",
-    role: "Diplomatic corps, formal calendar",
-    piece: "Grey Spirit · three-piece",
-    year: "MMXXII",
+    name: "Mike Espy",
+    role: "Former Secretary of Agriculture",
+    piece: "Public service",
     image: media.notable1,
   },
   {
     number: "02",
-    name: "The Founder",
-    role: "Private office, international travel",
-    piece: "Grey Spirit · double-breasted",
-    year: "MMXXIII",
+    name: "Jabari O. Edwards",
+    role: "Founder/Chairman of J5 GBL",
+    piece: "Business leadership",
     image: media.notable2,
   },
   {
     number: "03",
-    name: "The Captain",
-    role: "International sport, retirement season",
-    piece: "Off the Hour · unstructured jacket",
-    year: "MMXXIV",
+    name: "Mahmoud Abdul Rauf",
+    role: "NBA legend and global activist",
+    piece: "Sport and advocacy",
     image: media.notable3,
   },
   {
     number: "04",
-    name: "The Pianist",
-    role: "Concert performance wardrobe",
-    piece: "White Dreams · dinner jacket",
-    year: "MMXXIV",
+    name: "Mike Espy",
+    role: "Former Ole Miss and Washington Redskins receiver",
+    piece: "Football",
     image: media.notable4,
   },
   {
     number: "05",
-    name: "The Architect",
-    role: "Studio principal, travel rotation",
-    piece: "Grey Spirit · travel suit",
-    year: "MMXXV",
+    name: 'Andre "Gorgeous Dre" Taylor',
+    role: "Activist, author, Seattle Street Czar",
+    piece: "Community leadership",
     image: media.notable5,
   },
   {
     number: "06",
-    name: "The Collector",
-    role: "Private events, evening dress",
-    piece: "White Dreams · tailcoat",
-    year: "MMXXIII",
+    name: "Larry Belton",
+    role: "Former university dean and legendary fashion savant",
+    piece: "Education and style",
     image: media.notable6,
   },
   {
     number: "07",
-    name: "The Director",
-    role: "Screening circuit, press dinners",
-    piece: "White Dreams · shawl-collar jacket",
-    year: "MMXXV",
+    name: "Carlos Moore, Esq.",
+    role: "Managing partner, The Cochran Firm, Mississippi Delta",
+    piece: "Law",
     image: media.notable7,
   },
   {
     number: "08",
-    name: "The Groom",
-    role: "Ceremony commission, returned for more",
-    piece: "White Dreams · ceremony suit",
-    year: "MMXXIV",
+    name: "Johnnathan Abram",
+    role: "2019 first-round draft pick and starting safety, Las Vegas Raiders",
+    piece: "Professional football",
     image: media.notable8,
   },
   {
     number: "09",
-    name: "The Chairman",
-    role: "Board season, daily rotation",
-    piece: "Grey Spirit · business wardrobe",
-    year: "MMXXI",
+    name: "Jesse Mitchell III, Esq.",
+    role: "Former Baltimore Raven and founder of The Mitchell Firm, PLLC",
+    piece: "Sport and law",
     image: media.notable9,
   },
-] satisfies NotableClient[];
+  {
+    number: "10",
+    name: "William McCurdy II",
+    role: "Nevada State Assemblyman and chair of the Nevada Democratic Party",
+    piece: "Public service",
+    image: media.notable1,
+  },
+  {
+    number: "11",
+    name: "Comedian KDubb",
+    role: "MTV’s Wild ’N Out, Bad Boys of Comedy, T.I. & Tiny’s: The Family Hustle",
+    piece: "Entertainment",
+    image: media.notable2,
+  },
+  {
+    number: "12",
+    name: "Halbert Dockins, Esq.",
+    role: "Co-founder and managing partner of Dockins Turnage & Banks, PLLC",
+    piece: "Law",
+    image: media.notable3,
+  },
+  {
+    number: "13",
+    name: "Dr. Darryl Brister",
+    role: "Bishop, author, and founder of Beacon Light International Baptist Cathedral",
+    piece: "Faith leadership",
+    image: media.notable4,
+  },
+  {
+    number: "14",
+    name: "Terrell Buckley",
+    role:
+      "Florida State and College Football Hall of Fame inductee, Jim Thorpe Awardee, Heisman Trophy candidate, Super Bowl champion",
+    piece: "Football legacy",
+    image: media.notable5,
+  },
+  {
+    number: "15",
+    name: "Bishop Paul Morton",
+    role:
+      "Co-founder of Full Gospel Baptist Church Fellowship, author, bishop, recording artist",
+    piece: "Faith and music",
+    image: media.notable6,
+  },
+];
 
 export const ABOUT_CONTENT = {
   heroImage: media.about,
@@ -836,13 +871,13 @@ export const FOOTER_CONTENT = {
 
 export const NOTABLE_PAGE_CONTENT = {
   backgroundImage: media.notableBg,
-  label: "Index · Worn by",
+  label: "Index · Public acknowledgements",
   title: "A quiet list of men who",
   emphasis: "refuse the obvious",
   intro:
-    "Across formal calendars, business travel, and private occasions, the studio has dressed a small group of clients who preferred discretion to advertising. What follows is a version of that list that still respects the room.",
+    "Drawn from the studio’s own acknowledgements, this page spans public office, sport, law, ministry, and entertainment without flattening the men behind the names.",
   outro:
-    "Further commissions remain off the record at the wearer’s request. That discretion is part of the service, not a footnote to it.",
+    "This page reflects the names the studio has chosen to acknowledge publicly, and leaves the rest of the private client record where it belongs.",
   seoTitle: "Notable Clients",
   seoDescription:
     "A discreet overview of the kinds of clients Kyris Kustoms dresses, from diplomatic wardrobes to ceremony commissions.",

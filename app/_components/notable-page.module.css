@@ -80,6 +80,10 @@
   transition: padding 260ms ease;
 }
 
+.rowNoYear {
+  grid-template-columns: 4rem 2fr 3fr 1fr;
+}
+
 .row:hover {
   padding-left: 1rem;
 }
